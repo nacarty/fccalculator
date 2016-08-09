@@ -33,7 +33,6 @@ function toggle2nd(k)
         $(d1[i]).css('display', op1);   
         $(d2[i]).css('display', op2);          
    }
-   alert(navigator.geolocation.getCurrentPosition());
 }
 
 function toggleSign() //from +ve to -ve and vice versa
