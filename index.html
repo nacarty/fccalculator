@@ -37,15 +37,15 @@ and open the template in the editor.
                     <button class = 'scnd0' id = 'eToX'  onclick="exp(globalStr)">e<sup>x</sup></button>                   
                     <button class = 'scnd1' id = 'root'  onclick="sqrt(globalStr)">&radic;x</button>
                     <button class = 'scnd1' id = 'yRootX'  onclick="setLock('XrootY')"><sup><sup>y</sup></sup>&radic;x</button>
-                     <button class = 'scnd1' id = 'logE'  onclick="loge(globalStr)">Log<sub>e</sub></button>
+                    <button class = 'scnd1' id = 'logE'  onclick="loge(globalStr)" style = "font-size: 14px">Lg<sub>e</sub></button>
            </span>
                     <button class = 'operator' value = '&divide;'   onclick='operation(this.value)'>&divide;</button>
-                    <button class = 'constant' value = '3.1415926535'  onclick="addSpecialValue(this.value)">&pi;</button>
+                    <button class = 'constant'  onclick="addSpecialValue(PI)">&pi;</button>
                     <button class = 'number' value = '1' onclick="addEntry(this.value)">1</button>
                     <button class = 'number' value = '2' onclick="addEntry(this.value)">2</button>
                     <button class = 'number' value = '3'  onclick="addEntry(this.value)">3</button>
                     <button class = 'operator' value = 'x'   onclick='operation(this.value)'>x</button>
-                    <button class = 'constant' value = '2.7182818285' onclick="addSpecialValue(this.value)"><i>e</i></button>
+                    <button class = 'constant' onclick="addSpecialValue(E)"><i>e</i></button>
                     <button class = 'number' value = '4'  onclick="addEntry(this.value)">4</button>            
                     <button class = 'number' value = '5'  onclick="addEntry(this.value)">5</button>
                     <button class = 'number' value = '6'  onclick="addEntry(this.value)">6</button>

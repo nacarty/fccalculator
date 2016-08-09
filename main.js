@@ -1,5 +1,7 @@
 
 var globalStr = '',
+        PI = '3.14159265358979',
+        E = '2.71828182845904',
         placed = false,
        tempGlobalStr = '',
        result = '',
@@ -26,11 +28,12 @@ function toggle2nd(k)
         op1 = 'inherit';
         op2 = 'none';
     }        
-   for (var i = 0; i < 4; i++){
-            console.log(d2);
-           $(d1[i]).css('display', op1);   
-           $(d2[i]).css('display', op2);          
-             }
+   for (var i = 0; i < 4; i++)
+   {
+        $(d1[i]).css('display', op1);   
+        $(d2[i]).css('display', op2);          
+   }
+   alert(navigator.geolocation.getCurrentPosition());
 }
 
 function toggleSign() //from +ve to -ve and vice versa
@@ -56,7 +59,7 @@ function toggleSign() //from +ve to -ve and vice versa
         globalStr = '-'+globalStr;    
        $('#result').html(globalStr);
     }
-    constant = true; //once sign has been toggled, you cannot alter the entered value
+    //constant = true; //once sign has been toggled, you cannot alter the entered value
 }
 
 function addDecimalPoint()
@@ -75,7 +78,7 @@ function addDecimalPoint()
 function addSpecialValue(val){  //values like PI are special E 
     if (globalStr === '')
     {
-        globalStr = val;
+        globalStr = val; //we can make val = PI or E; then show
        $('#result').html(globalStr);
        constant = true;
    }
@@ -224,13 +227,15 @@ function cancelAll(val) //invoking AC or CE on the calculator
      }         
 }
 
-
 function setLock(L)  //when X to the Y OR the Yth root of X is invoked, you need to lock the system so that a second operand is entered
 {    
     var op;
     
-       if ((lock !== undefined)||(globalStr===''))    
+       if ((lock !== undefined)||(globalStr===''))
+       {   
+           alert('System cannot handle that compound operation..');
            return;
+       }
        if (L === 'XpowerY')   //'XpowerY' or 'XrootY'
        {
           op = globalStr+'<sup>*</sup>';          
@@ -308,7 +313,6 @@ function fac(n)
     }    
     else if ((num === 0)||(num===1))
     {
-        console.log('The number is 0 or 1: ', n);
         globalStr = '1';
         $('#result').html('1');
         if (lockVal=== undefined)
@@ -328,15 +332,15 @@ function fac(n)
             temp *= i; 
         globalStr = temp; //.toString();
         $('#result').html(globalStr);
-        if (lockVal=== false)
-        {
+        if (lockVal=== undefined)
+        {            
             if (constant === false)
-               trail += ' '+num+'! ';
+               trail += ' '+num+'!';
             else
-               trail += ' ! ';
+               trail += ' !';
             $('#trail').html(trail);
             placed = true;
-       }
+        }
       constant = true;
     }
     else
@@ -355,30 +359,41 @@ function fac(n)
      $('#result').html(globalStr);
      if (lockVal=== undefined)
      {
-        if (constant === false)
-              trail += ' '+s+'(e)';
+        var vType = valueType(n);
+        s = (vType !== undefined)? vType : s;
+        if ((constant === false)||(vType!== undefined))
+              trail += ' '+s+'<sup>(e<sup>x</sup>)</sup>';
         else
-          trail += '(e)';
+          trail += '<sup>(e<sup>x</sup>)</sup>';
          $('#trail').html(trail); 
          placed = true;
      }
       constant = true;
  }
  
+ function valueType(n)
+ {
+     if (n===PI)
+        return '&pi;';
+     else if (n===E)
+        return 'e';
+     else 
+        return undefined;     
+ }
+ 
  function square(n)
- {  
-     if (globalStr==='')
-        return;
-    
+ {           
      var s = parseFloat(n);
      globalStr = (s*s); //.toString();
      $('#result').html(globalStr);
-     if (lockVal === undefined)
-     {    
-        if (constant === false)
+     if (lockVal === undefined) // pow(x, y) or root(x,y) not invoked 
+     {  
+        var vType = valueType(n);
+        s = (vType !== undefined)? vType : s;
+        if ((constant === false)||(vType!== undefined))
               trail += ' '+s+'<sup>2</sup>';
           else
-              trail += '<sup>*2</sup>';
+              trail += '<sup>.2</sup>';
          $('#trail').html(trail); 
          placed = true;
       }
@@ -395,10 +410,12 @@ function fac(n)
      $('#result').html(globalStr);
      if (lockVal=== undefined)
      {
-        if (constant === false)
+        var vType = valueType(n);
+        s = (vType !== undefined)? vType : s;
+        if ((constant === false)||(vType!== undefined))
               trail += ' '+s+'<sup>-½</sup>';
         else
-              trail += '<sup>*-½</sup>';
+              trail += '<sup>.-½</sup>';
          $('#trail').html(trail); 
          placed = true;
     }
@@ -415,10 +432,12 @@ function fac(n)
      $('#result').html(globalStr);
      if (lockVal=== undefined)
      {
-        if (constant === false)
-              trail += ' '+s+'<sub>(e)</sub>';
+       var vType = valueType(n);
+        s = (vType !== undefined)? vType : s;
+        if ((constant === false)||(vType!== undefined))
+              trail += ' '+s+'(Lg<sub>e</sub>)';
           else
-              trail += '<sub>.(e)</sub>';
+              trail += '(Lg<sub>e</sub>)';
          $('#trail').html(trail); 
          placed = true;
     }
@@ -435,10 +454,12 @@ function fac(n)
      $('#result').html(globalStr);
      if (lockVal=== undefined)
      {
-        if (constant === false)
+        var vType = valueType(n);
+        s = (vType !== undefined)? vType : s;
+        if ((constant === false)||(vType!== undefined))
               trail += ' '+s+'<sup>-1</sup>';
           else
-              trail += '<sup>*-1</sup>';
+              trail += '<sup>.-1</sup>';
          $('#trail').html(trail); 
          placed = true;
      }
@@ -448,7 +469,11 @@ function fac(n)
  function backspace()
  {
      if ((constant === true)||(globalStr===''))
+     {
+         globalStr = '';
+         $('#result').html('0');
          return;
+     }
      
      var len = globalStr.length;
      if (len > 1)
@@ -462,5 +487,8 @@ function fac(n)
           globalStr = '';
       }
       if ((globalStr.length === 1)&&(globalStr[0]==='-'))
-          globalStr = '';      
+      {
+          globalStr = '';   
+          $('#result').html('0');
+      }
  }
