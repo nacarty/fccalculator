@@ -184,7 +184,7 @@ function cancelAll(val) //invoking AC or CE on the calculator
         {
             globalStr = '';
             $('#result').html('0'); 
-            if (trail[0]=== 'a')
+            if ((trail.length > 0)&& (trail[0]=== 'a'))
             {
                 trail = '';
                 trailVal = undefined;
@@ -196,15 +196,17 @@ function cancelAll(val) //invoking AC or CE on the calculator
         {                        
                 lock = undefined;
                 lockVal = undefined;
-                globalStr =  trailVal;  //.toString();
-                $('#result').html(globalStr);
-                constant = true; //Can't do anything with the value except apply an operation
+                if (trailVal !== undefined)
+                { 
+                  globalStr =  trailVal;  //.toString();
+                  $('#result').html(globalStr);
+                  constant = true; //Can't do anything with the value except apply an operation
+                }
                 trail = '';
                 trailVal = undefined;
                 $('#trail').html('0');
                 $('#answer').html('0');
                 opStack = []; 
-                valStack = [];
        }    
    }
     else   // (val === 0)  i.e AC is invoked
@@ -221,6 +223,7 @@ function cancelAll(val) //invoking AC or CE on the calculator
          opStack = [];
      }         
 }
+
 
 function setLock(L)  //when X to the Y OR the Yth root of X is invoked, you need to lock the system so that a second operand is entered
 {    
