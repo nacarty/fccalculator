@@ -319,7 +319,7 @@ function fac(n)
           if (constant === false)
                trail += ' '+num+'!';
           else
-               trail += '! ';
+               trail += '!';
           $('#trail').html(trail); 
           placed = true;
         }
