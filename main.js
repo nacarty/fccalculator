@@ -156,16 +156,16 @@ function operation(operator) // +, -, x, ÷ and = are operators that instigate o
              placed = false;
          }
       $('#trail').html(trail);   
-      $('#answer').html('ans = '+trailVal.toString());
+      $('#answer').html('ans = '+trailVal);
        }
        else
        {
-           globalStr = trailVal.toString();
-           $('#result').html(globalStr);  
+           //globalStr = trailVal.toString();
+           $('#result').html(trailVal);  
           if (trail.length === 0)
-             $('#trail').html(globalStr+' = [end]');   
+             $('#trail').html(trailVal+' = [end]');   
          else 
-             $('#trail').html(trail+' = [end]');
+             $('#trail').html(trail+' '+globalStr+' = [end]');
           $('#answer').html('[end]');
           constant = true;
           opStack = [];
@@ -196,7 +196,7 @@ function cancelAll(val) //invoking AC or CE on the calculator
         {                        
                 lock = undefined;
                 lockVal = undefined;
-                globalStr =  trailVal.toString();
+                globalStr =  trailVal;  //.toString();
                 $('#result').html(globalStr);
                 constant = true; //Can't do anything with the value except apply an operation
                 trail = '';
@@ -252,7 +252,7 @@ function XpowerY(op)
   var x = parseFloat(lockVal),
           y = parseFloat(globalStr);
   
-  globalStr = Math.pow(x,y).toString();
+  globalStr = Math.pow(x,y); //.toString();
   $('#result').html(globalStr);
   if (trail[trail.length -7]==='*')
     trail = trail.substring(0,trail.length-7)+y+'</sup>';
@@ -271,7 +271,7 @@ function XrootY(op)
   var x = parseFloat(lockVal),
           y = parseFloat(globalStr);
   
-  globalStr = Math.pow(x,1/y).toString();
+  globalStr = Math.pow(x,1/y); //.toString();
   $('#result').html(globalStr);
   if (trail[trail.length -7]==='*')
         trail = trail.substring(0,trail.length-7)+y+'</sup>';
@@ -323,7 +323,7 @@ function fac(n)
     {
         for ( var i = 2; i <= num; i++)
             temp *= i; 
-        globalStr = temp.toString();
+        globalStr = temp; //.toString();
         $('#result').html(globalStr);
         if (lockVal=== false)
         {
@@ -368,7 +368,7 @@ function fac(n)
         return;
     
      var s = parseFloat(n);
-     globalStr = (s*s).toString();
+     globalStr = (s*s); //.toString();
      $('#result').html(globalStr);
      if (lockVal === undefined)
      {    
@@ -388,7 +388,7 @@ function fac(n)
         return;
     
      var s = parseFloat(n);
-     globalStr = Math.sqrt(s).toString();
+     globalStr = Math.sqrt(s); //.toString();
      $('#result').html(globalStr);
      if (lockVal=== undefined)
      {
@@ -408,7 +408,7 @@ function fac(n)
         return;
     
      var s = parseFloat(n);
-     globalStr = Math.log(s).toString();
+     globalStr = Math.log(s); //.toString();
      $('#result').html(globalStr);
      if (lockVal=== undefined)
      {
@@ -428,7 +428,7 @@ function fac(n)
         return;
     
      var s = parseFloat(n);
-     globalStr = (1/s).toString();
+     globalStr = (1/s); //.toString();
      $('#result').html(globalStr);
      if (lockVal=== undefined)
      {
