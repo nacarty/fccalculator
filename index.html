@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Javascript Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">         
+        <link href="w3.css" rel = 'stylesheet'> 
+        <link href='https://fonts.googleapis.com/css?family=Orbitron|Open+Sans' rel='stylesheet' type='text/css'>  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"> </script>  
+        <script  src = "main.js"></script>
+    </head>
+    <body >
+        <div id = 'calculator' >
+            <div id = 'model'>JAVASCRIPT&nbsp;&nbsp; CALCULATOR</div>
+            <div id = 'display'>
+                <div id = 'big'> <p id= 'result'>0</p></div>
+                <div id = 'small'><p id = 'trail'>0</p></div>
+                <div id = 'tiny'><p id = 'answer'>0</p></div>
+            </div>
+            <p id = 'keyPad' class = ''>
+                    <button id = 'AC'  onclick="cancelAll(0)">AC</button>
+                    <button id = 'CE' onclick="cancelAll(1)">CE</button>
+                    <button class = 'scnd0' id ='scnd01' onclick="toggle2nd(0)">2nd</button>
+                    <button class = 'scnd1' id ='scnd02'  onclick="toggle2nd(1)">2nd</button>
+                    <button class = '' id = 'inverse'  onclick="inverse(globalStr)">x<sup> - 1</sup></button>
+                    <button class = '' id = 'plusMinus'  onclick='toggleSign()'>-/+</button>
+                    <button class = '' id = 'factorial'  onclick="fac(globalStr)">!</button>
+           <span id = 'scndspan' class='w3-container'> 
+                    <button class = 'scnd0' id = 'square'   onclick="square(globalStr)">x<sup>2</sup></button>
+                    <button class = 'scnd0'  id = 'xExpY'   onclick="setLock('XpowerY')">x<sup>y</sup></button>
+                    <button class = 'scnd0' id = 'eToX'  onclick="exp(globalStr)">e<sup>x</sup></button>                   
+                    <button class = 'scnd1' id = 'root'  onclick="sqrt(globalStr)">&radic;x</button>
+                    <button class = 'scnd1' id = 'yRootX'  onclick="setLock('XrootY')"><sup><sup>y</sup></sup>&radic;x</button>
+                     <button class = 'scnd1' id = 'logE'  onclick="loge(globalStr)">Log<sub>e</sub></button>
+           </span>
+                    <button class = 'operator' value = '&divide;'   onclick='operation(this.value)'>&divide;</button>
+                    <button class = 'constant' value = '3.1415926535'  onclick="addSpecialValue(this.value)">&pi;</button>
+                    <button class = 'number' value = '1' onclick="addEntry(this.value)">1</button>
+                    <button class = 'number' value = '2' onclick="addEntry(this.value)">2</button>
+                    <button class = 'number' value = '3'  onclick="addEntry(this.value)">3</button>
+                    <button class = 'operator' value = 'x'   onclick='operation(this.value)'>x</button>
+                    <button class = 'constant' value = '2.7182818285' onclick="addSpecialValue(this.value)"><i>e</i></button>
+                    <button class = 'number' value = '4'  onclick="addEntry(this.value)">4</button>            
+                    <button class = 'number' value = '5'  onclick="addEntry(this.value)">5</button>
+                    <button class = 'number' value = '6'  onclick="addEntry(this.value)">6</button>
+                    <button class = 'operator' value = '-'   onclick='operation(this.value)'>-</button>
+                    <button class = 'erase' value = 'erase' onclick='backspace()' >&LeftArrow;</button>
+                    <button class = 'number' value = '7'  onclick="addEntry(this.value)">7</button>
+                    <button class = 'number' value = '8'  onclick="addEntry(this.value)">8</button>
+                    <button class = 'number' value = '9'  onclick="addEntry(this.value)">9</button>
+                    <button class = 'number' value = '+'   onclick='operation(this.value)'>+</button>
+                    <button class = 'zero' value = '0'  onclick="addEntry(this.value)">0</button>
+                    <button class = 'point' value = '.'  onclick='addDecimalPoint()'>.</button>
+                    <button class = 'equal' value = '='  onclick='operation(this.value)'>=</button>
+            </p>
+            <p id = 'designer'>Designed and coded by <span id = 'theName'>Nigel Carty</span></p>
+     </div>
+    </body>
+</html>

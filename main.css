@@ -1,0 +1,122 @@
+/* 
+    Created on : Aug 4, 2016, 2:17:06 PM
+    Author     : Nigel Carty
+*/
+
+body{
+    background-color: #FDFDFD;
+    }
+#calculator{
+    width:305px;
+    padding: 15px;
+    padding-top: 15px;
+    background-color: #D0D0D0;
+    border-radius: 25px;
+    box-shadow: 7px 10px 34px 1px rgba(0, 0, 0, 0.5), inset -1px -6px 12px 0.1px #777777; 
+   margin-left: calc(50vw - 152px);
+   margin-top:50px;
+   text-align: center;    
+      }
+      
+#model{
+    font-size: 14px;
+    font-family: 'Orbitron';
+    font-weight: 600;
+    margin: 10px auto 16px;
+    color: green;
+}
+#display{
+    border-radius: 6px;
+    font-family: 'Orbitron','Times New Roman';
+    background-color: #AAA988;
+    text-align: right;
+    padding-right: 6px;
+    padding-left: 4px;
+    margin: -20px 7px 17px 7px;
+}
+#big{
+    font-size: 20px;
+    overflow-wrap:break-word;
+    word-wrap: break-word;
+}
+#result{
+   border-bottom:#333300 solid thin; 
+   line-height: 20px;
+   padding-top: 3px;   
+}
+#trail{
+    border-bottom:#333300 solid thin; 
+   line-height: 15px;
+   padding-top: 3px; 
+}
+#small, #tiny{
+     font-size: 11px;
+     color:#756265;
+     margin: 0px;
+     margin-top:-21px;
+     padding-left:3px;
+     overflow-wrap:break-word;
+     word-wrap: break-word;
+}
+
+#tiny{
+  margin-top:-12px;  
+}
+
+#keyPad{    
+    text-align: center;
+    padding:0;
+    display: inline-block;
+    margin-top: -10px;    
+    font-family: 'Orbitron';
+}
+
+button{
+    width:50px;
+    height:40px;
+    margin-bottom: 5px !important;
+    text-align: center;
+    border:none;
+    color: white;
+    font-size: 16px;
+   background-color: #333300;
+    border-radius: 10px;
+    box-shadow: 2px 3px 0px 0px #111, inset 0px -3px 10px 2px #454545;
+    }
+    
+    #AC, #CE{
+        background-color:#A72D45;
+    }
+    .zero, .equal{
+        width: 103px;
+    }
+    #scndspan{
+        padding: 0px !important;
+        margin-bottom: 0px !important;
+        display: inline-block;
+    }
+    .scnd0, .scnd1{
+        background-color: green;
+        
+    }
+    .scnd1{
+        color: yellow; /*  #FFC107; #A72D45; */
+        display: none;
+    }
+    #designer{
+        text-align: center;
+        font-family: 'Orbitron';
+        font-size: 10px;
+        margin: 0;
+        padding:0;
+        font-weight:700;
+    }
+    #theName{
+        color: green;
+    }
+    
+  
+    #designer{
+        height: 50px;
+    }
+       
