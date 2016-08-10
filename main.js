@@ -104,7 +104,11 @@ function addEntry(val)  //validate every character enter before it is added to t
 function operation(operator) // +, -, x, ÷ and = are operators that instigate operations
 {    
  if ((globalStr === '')||(globalStr === '-'))
+ {
+        constant = false;
         return;
+         
+ }
     
   if (lock === 'XpowerY')
     {
@@ -471,6 +475,7 @@ function fac(n)
      {
          globalStr = '';
          $('#result').html('0');
+         constant = false;
          return;
      }
      
